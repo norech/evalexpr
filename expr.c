@@ -21,11 +21,12 @@ const operator_map_t operators_expr[] = {
 
 expr_node_t *new_number_node(int number)
 {
-    expr_node_t *current = malloc(sizeof(expr_node_t));
+    expr_node_t *current = NULL;
+    current = malloc(sizeof(expr_node_t));
     current->is_computed = 1;
     current->result = number;
     current->node1 = NULL;
-    current->node1 = NULL;
+    current->node2 = NULL;
     current->do_operation = NULL;
 
     return (current);
@@ -33,7 +34,8 @@ expr_node_t *new_number_node(int number)
 
 expr_node_t *new_expr_node(expr_node_t *node1, char op, expr_node_t *node2)
 {
-    expr_node_t *current = malloc(sizeof(expr_node_t));
+    expr_node_t *current = NULL;
+    current = malloc(sizeof(expr_node_t));
     int i = 0;
 
     current->is_computed = 0;
@@ -67,4 +69,17 @@ int compute(expr_node_t *node)
         node->is_computed = 1;
     }
     return (node->result);
+}
+
+void free_expr(expr_node_t *node)
+{
+    if (node->node1 != NULL) {
+        free_expr(node->node1);
+        node->node1 = NULL;
+    }
+    if (node->node2 != NULL) {
+        free_expr(node->node2);
+        node->node2 = NULL;
+    }
+    free(node);
 }

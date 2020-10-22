@@ -22,9 +22,8 @@ typedef struct operator_map {
 } operator_map_t;
 
 expr_node_t *new_number_node(int number);
-
 expr_node_t *new_expr_node(expr_node_t *node1, char op, expr_node_t *node2);
-
 int compute(expr_node_t *node);
+void free_expr(expr_node_t *node);
 
 #endif

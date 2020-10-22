@@ -25,7 +25,7 @@ void consume_char(char **expr)
 
 int number(char **expr)
 {
-    char *number = malloc(sizeof(char) * (my_strlen(*expr) + 1));
+    char number[my_strlen(*expr) + 1];
     int i = 0;
 
     my_bzero(number, my_strlen(*expr) + 1);

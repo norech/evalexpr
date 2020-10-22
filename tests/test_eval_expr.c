@@ -68,6 +68,16 @@ Test (eval_expr, brackets_one)
     cr_expect_eq(eval_expr("(1)"), 1);
 }
 
+Test (eval_expr, minus_brackets)
+{
+    cr_expect_eq(eval_expr("-(1)"), -1);
+}
+
+Test (eval_expr, one_plus_brackets_times_three)
+{
+    cr_expect_eq(eval_expr("1+(2)*3"), 7);
+}
+
 Test (eval_expr, brackets_one_plus_one)
 {
     cr_expect_eq(eval_expr("(1+1)"), 2);

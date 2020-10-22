@@ -6,7 +6,7 @@ LIBS_TEST = $(LIBS) -lcriterion
 SRC = ${wildcard ./*.c}
 TEST_SRC = $(filter-out ./main.c, $(SRC))
 TEST_FILES = ./tests/*.c
-TARGET = evalexpr
+TARGET = eval_expr
 
 all: build_lib build_all clean
 
