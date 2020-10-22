@@ -59,8 +59,7 @@ Test (compute, compute_null_with_something)
     cr_expect_eq(compute(node), 0);
 }
 
-Test(free_expr_node, free) {
+Test(free_expr, free) {
     expr_node_t *node = new_expr_node(NULL, '+', new_number_node(1));
-    free_expr_node(node);
-    cr_expect_null(node);
+    free_expr(node);
 }

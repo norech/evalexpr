@@ -18,10 +18,13 @@ build_all: ${TARGET}
 $(TARGET): ${SRC}
 	${CC} ${CFLAGS} -o ${TARGET} ${SRC} ${LIBS}
 
-test:
+tests_run:
 	${CC} ${CFLAGS_TEST} -o unit_test ${TEST_SRC} ${TEST_FILES} ${LIBS_TEST}
+	./unit_test
 
-coverage: test
+test: tests_run
+
+coverage: tests_run
 	gcovr
 
 clean:
