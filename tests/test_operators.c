@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** test_expr
+** test_operators
 ** File description:
 ** Test
 */

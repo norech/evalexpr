@@ -35,7 +35,7 @@ Test (compute, compute_number)
 Test (compute, compute_operation)
 {
     expr_node_t *node = new_expr_node(new_number_node(1), '+', new_number_node(2));
-    cr_expect_eq(compute(node), 2);
+    cr_expect_eq(compute(node), 3);
 }
 
 Test (compute, compute_one_suboperation)
