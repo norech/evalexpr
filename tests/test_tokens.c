@@ -12,6 +12,7 @@ Test (number, positive_number)
     char *expr = "12";
     int nb = number(&expr);
     cr_assert_eq(nb, 12);
+    cr_assert_str_eq(expr, "");
 }
 
 Test (number, negative_number)
