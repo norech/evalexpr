@@ -1,8 +1,10 @@
 CC = gcc
 CFLAGS = -W -Wall -Werror -I./include -L./lib -g3
-CFLAGS_TEST = ${CFLAGS} -Wno-stringop-truncation -lcriterion --coverage
+CFLAGS_TEST = ${CFLAGS} -Wno-stringop-truncation --coverage
 LIBS = -lmy
+LIBS_TEST = $(LIBS) -lcriterion
 SRC = ${wildcard ./*.c}
+TEST_SRC = $(filter-out ./main.c, $(SRC))
 TEST_FILES = ./tests/*.c
 TARGET = evalexpr
 
@@ -15,6 +17,9 @@ build_all: ${TARGET}
 
 $(TARGET): ${SRC}
 	${CC} ${CFLAGS} -o ${TARGET} ${SRC} ${LIBS}
+
+test:
+	${CC} ${CFLAGS_TEST} -o unit_test ${TEST_SRC} ${TEST_FILES} ${LIBS_TEST}
 
 coverage: test
 	gcovr
