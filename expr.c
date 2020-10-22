@@ -51,7 +51,10 @@ expr_node_t *new_expr_node(expr_node_t *node1, char op, expr_node_t *node2)
     return (current);
 }
 
-int compute(expr_node_t *node) {
+int compute(expr_node_t *node)
+{
+    int result = 0;
+
     if (!node->is_computed) {
         if (node->node1 == NULL || node->node2 == NULL)
             return (0);
@@ -59,7 +62,8 @@ int compute(expr_node_t *node) {
             compute(node->node1);
         if (!node->node2->is_computed)
             compute(node->node2);
-        node->result = node->do_operation(node->node1->result, node->node2->result);
+        result = node->do_operation(node->node1->result, node->node2->result);
+        node->result = result;
         node->is_computed = 1;
     }
     return (node->result);
