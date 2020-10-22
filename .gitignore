@@ -1,0 +1,16 @@
+main.c
+main
+!*/main.c
+a.out
+*.out
+*.a
+*.o
+\#*\#
+*~
+.\#*
+*.gc*
+run_tests
+unit_tests
+unit_test
+infin_add
+vgcore.*
