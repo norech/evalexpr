@@ -28,7 +28,6 @@ expr_node_t *new_number_node(int number)
     current->node1 = NULL;
     current->node2 = NULL;
     current->do_operation = NULL;
-
     return (current);
 }
 
@@ -49,7 +48,6 @@ expr_node_t *new_expr_node(expr_node_t *node1, char op, expr_node_t *node2)
         }
         i++;
     }
-
     return (current);
 }
 
