@@ -54,7 +54,7 @@ expr_node_t *new_expr_node(expr_node_t *node1, char op, expr_node_t *node2)
 int compute(expr_node_t *node) {
     if (!node->is_computed) {
         if (node->node1 == NULL || node->node2 == NULL)
-            return (-1);
+            return (0);
         if (!node->node1->is_computed)
             compute(node->node1);
         if (!node->node2->is_computed)
