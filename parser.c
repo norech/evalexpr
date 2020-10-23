@@ -46,7 +46,7 @@ expr_node_t *get_element(char **expr, expr_node_t *prev_node, int priority)
             tmp_node = make_tree(expr, priority + 1);
             tmp_node = new_expr_node(brackets_node, next_o.symbol, tmp_node);
             return (new_expr_node(prev_node, o.symbol, tmp_node));
-        } 
+        }
         *expr -= 1;
         return (new_expr_node(prev_node, o.symbol, brackets_node));
     }
