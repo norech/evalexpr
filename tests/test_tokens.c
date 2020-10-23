@@ -39,6 +39,14 @@ Test (number, negative_digit)
     cr_assert_str_eq(expr, "");
 }
 
+Test (number, random_stuff)
+{
+    char *expr = "blah blah blah";
+    int nb = number(&expr);
+    cr_assert_eq(nb, 0);
+    cr_assert_str_eq(expr, "blah blah blah");
+}
+
 Test(operator, existant_operator)
 {
     char *expr = "%";

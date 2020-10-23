@@ -59,6 +59,18 @@ Test (compute, compute_null_with_something)
     cr_expect_eq(compute(node), 0);
 }
 
+Test (compute, compute_something_with_null)
+{
+    expr_node_t *node = new_expr_node(new_number_node(1), '+', NULL);
+    cr_expect_eq(compute(node), 0);
+}
+
+Test (compute, compute_number_with_something_with_a_non_existant_operator)
+{
+    expr_node_t *node = new_expr_node(new_number_node(1), '@', new_number_node(1));
+    cr_assert_null(node->do_operation);
+}
+
 Test(free_expr, free) {
     expr_node_t *node = new_expr_node(NULL, '+', new_number_node(1));
     free_expr(node);

@@ -41,6 +41,7 @@ expr_node_t *new_expr_node(expr_node_t *node1, char op, expr_node_t *node2)
     current->result = 0;
     current->node1 = node1;
     current->node2 = node2;
+    current->do_operation = NULL;
     while (operators_expr[i].key != '\0') {
         if (operators_expr[i].key == op) {
             current->do_operation = operators_expr[i].value;

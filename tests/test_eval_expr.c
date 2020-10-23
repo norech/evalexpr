@@ -108,3 +108,7 @@ Test (eval_expr, bracket_times_bracket_in_a_bracket)
     cr_expect_eq(eval_expr("((1+1)*(2-1))"), 2);
 }
 
+Test (eval_expr, unbalanced_brackets)
+{
+    cr_expect_eq(eval_expr("(1"), 0);
+}
