@@ -20,7 +20,7 @@ $(TARGET): ${SRC}
 
 tests_run:
 	${CC} ${CFLAGS_TEST} -o unit_test ${TEST_SRC} ${TEST_FILES} ${LIBS_TEST}
-	./unit_test
+	./unit_test --verbose
 
 test: tests_run
 
