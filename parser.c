@@ -38,15 +38,16 @@ expr_node_t *get_element(char **expr, expr_node_t *prev_node, int priority)
 {
     operator_token_t o = operator(expr);
     expr_node_t *tmp_node = NULL;
-
     expr_node_t *brackets_node = handle_brackets(expr);
+
     if (brackets_node != NULL) {
         operator_token_t next_o = operator(expr);
         if (next_o.priority > priority) {
             tmp_node = make_tree(expr, priority + 1);
             tmp_node = new_expr_node(brackets_node, next_o.symbol, tmp_node);
             return (new_expr_node(prev_node, o.symbol, tmp_node));
-        }
+        } 
+        *expr -= 1;
         return (new_expr_node(prev_node, o.symbol, brackets_node));
     }
     if (o.priority == priority) {

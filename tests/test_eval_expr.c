@@ -112,3 +112,8 @@ Test (eval_expr, unbalanced_brackets)
 {
     cr_expect_eq(eval_expr("(1"), 0);
 }
+
+Test (eval_expr, four_divided_by_bracket_plus_two)
+{
+    cr_expect_eq(eval_expr("4/(2)+2"), 4);
+}
