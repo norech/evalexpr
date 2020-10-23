@@ -31,9 +31,9 @@ $(TARGET): ${SRC}
 	${CC} ${CFLAGS} -o ${TARGET} ${SRC} main.c ${LFLAGS}
 
 clean:
-	rm ${OBJ} *.gc* unit_test 2>/dev/null || exit 0
+	rm ${OBJ} 2>/dev/null || exit 0
 
 fclean: clean
-	rm ${LIB} 2>/dev/null || exit 0
+	rm ${LIB} *.gc* unit_test 2>/dev/null || exit 0
 
 re: fclean all
