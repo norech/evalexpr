@@ -28,7 +28,7 @@ tests_run:
 	./unit_test --verbose
 
 $(TARGET): ${SRC}
-	${CC} ${CFLAGS} -o ${TARGET} ${SRC} ${LFLAGS}
+	${CC} ${CFLAGS} -o ${TARGET} ${SRC} main.c ${LFLAGS}
 
 clean:
 	rm ${OBJ} *.gc* unit_test 2>/dev/null || exit 0
