@@ -1,11 +1,10 @@
 CC = gcc
 CFLAGS = -W -Wall -Werror -I./include -L./lib -g3
-CFLAGS_TEST = ${CFLAGS} -Wno-stringop-truncation --coverage
-LIBS = -lmy
-LIBS_TEST = $(LIBS) -lcriterion
+LFLAGS = -lmy
+TEST_FLAGS = $(LFLAGS) -lcriterion --coverage
 SRC = ${wildcard ./*.c}
 TEST_SRC = $(filter-out ./main.c, $(SRC))
-TEST_FILES = ./tests/*.c
+TEST_FILES = ${wildcard ./tests/*.c}
 TARGET = eval_expr
 
 all: build_lib build_all clean
@@ -16,10 +15,10 @@ build_lib:
 build_all: ${TARGET}
 
 $(TARGET): ${SRC}
-	${CC} ${CFLAGS} -o ${TARGET} ${SRC} ${LIBS}
+	${CC} ${CFLAGS} -o ${TARGET} ${SRC} ${LFLAGS}
 
 tests_run:
-	${CC} ${CFLAGS_TEST} -o unit_test ${TEST_SRC} ${TEST_FILES} ${LIBS_TEST}
+	${CC} ${CFLAGS} ${TEST_FLAGS} -o unit_test ${TEST_SRC} ${TEST_FILES} ${LFLAGS}
 	./unit_test --verbose
 
 test: tests_run
