@@ -2,10 +2,19 @@ CC = gcc
 CFLAGS = -W -Wall -Werror -I./include -L./lib -g3
 LFLAGS = -lmy
 TEST_FLAGS = $(LFLAGS) -lcriterion --coverage
-SRC = ${wildcard ./*.c}
-TEST_SRC = $(filter-out ./main.c, $(SRC))
-TEST_FILES = ${wildcard ./tests/*.c}
 TARGET = eval_expr
+
+SRC = 	eval_expr.c \
+		expr.c \
+		operators.c \
+		parser_brackets.c \
+		parser.c \
+		tokens.c
+
+TESTS =	tests/test_eval_expr.c \
+		tests/test_expr.c \
+		tests/test_operators.c \
+		tests/test_tokens.c
 
 all: build_lib build_all clean
 
@@ -14,17 +23,12 @@ build_lib:
 
 build_all: ${TARGET}
 
-$(TARGET): ${SRC}
-	${CC} ${CFLAGS} -o ${TARGET} ${SRC} ${LFLAGS}
-
 tests_run:
-	${CC} ${CFLAGS} ${TEST_FLAGS} -o unit_test ${TEST_SRC} ${TEST_FILES} ${LFLAGS}
+	${CC} ${CFLAGS} ${TEST_FLAGS} -o unit_test ${SRC} ${TESTS} ${LFLAGS}
 	./unit_test --verbose
 
-test: tests_run
-
-coverage: tests_run
-	gcovr
+$(TARGET): ${SRC}
+	${CC} ${CFLAGS} -o ${TARGET} ${SRC} ${LFLAGS}
 
 clean:
 	rm ${OBJ} *.gc* unit_test 2>/dev/null || exit 0
