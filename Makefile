@@ -16,7 +16,7 @@ TESTS =	tests/test_eval_expr.c \
 		tests/test_operators.c \
 		tests/test_tokens.c
 
-all: build_lib build_all clean
+all: build_lib build_all
 
 build_lib:
 	make -C ./lib/my/
