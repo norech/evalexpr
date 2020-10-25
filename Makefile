@@ -3,6 +3,7 @@ CFLAGS = -W -Wall -Werror -I./include -L./lib -g3
 LFLAGS = -lmy
 TEST_FLAGS = $(LFLAGS) -lcriterion --coverage
 TARGET = eval_expr
+TARGET_TEST = unit_test
 
 SRC = 	eval_expr.c \
 		expr.c \
@@ -23,9 +24,12 @@ build_lib:
 
 build_all: ${TARGET}
 
-tests_run:
-	${CC} ${CFLAGS} ${TEST_FLAGS} -o unit_test ${SRC} ${TESTS} ${LFLAGS}
-	./unit_test --verbose
+tests_run: clean_tests build_lib
+	${CC} ${CFLAGS} ${TEST_FLAGS} -o ${TARGET_TEST} ${SRC} ${TESTS} ${LFLAGS}
+	./${TARGET_TEST} --verbose
+
+clean_tests:
+	rm -rf ${TARGET_TEST}
 
 $(TARGET): ${SRC}
 	${CC} ${CFLAGS} -o ${TARGET} ${SRC} main.c ${LFLAGS}
