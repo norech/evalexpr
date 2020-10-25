@@ -5,7 +5,6 @@ a.out
 \#*\#
 *~
 .\#*
-*.gc*
 run_tests
 unit_tests
 unit_test
